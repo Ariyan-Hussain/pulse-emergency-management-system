@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>{% block title %}PULSE Hospital Management{% endblock %}</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+        }
+
+        .navbar {
+            background: #222;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .logo {
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+
+        .navbar a:hover {
+            background: #444;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="navbar">
+
+        <div class="logo">
+            🏥 PULSE
+        </div>
+
+        <a href="/">Dashboard</a>
+
+        <a href="/patients">Patients</a>
+
+        <a href="/hospitals">Hospitals</a>
+
+        <a href="/emergency">Emergency</a>
+
+        <a href="/beds">Beds</a>
+
+    </div>
+
+
+    <div class="content">
+
+        {% block content %}
+
+        {% endblock %}
+
+    </div>
+
+</body>
+
+</html>

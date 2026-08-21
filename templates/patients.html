@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PULSE - Patients</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 30px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🏥 PULSE - Patient Management</h1>
+
+    <form method="POST">
+
+        <label>Patient Name</label>
+        <input type="text" name="name" required>
+
+        <label>Age</label>
+        <input type="number" name="age" required>
+
+        <label>Gender</label>
+        <select name="gender">
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+        </select>
+
+        <label>Phone</label>
+        <input type="text" name="phone">
+
+        <label>Blood Group</label>
+        <select name="blood_group">
+            <option>O+</option>
+            <option>O-</option>
+            <option>A+</option>
+            <option>A-</option>
+            <option>B+</option>
+            <option>B-</option>
+            <option>AB+</option>
+            <option>AB-</option>
+        </select>
+
+        <label>Emergency Type</label>
+        <input type="text" name="emergency_type">
+
+        <label>Priority</label>
+        <select name="priority">
+            <option>LOW</option>
+            <option>MEDIUM</option>
+            <option>HIGH</option>
+        </select>
+
+        <button type="submit">
+            Register Patient
+        </button>
+
+    </form>
+
+    <h2>Registered Patients</h2>
+
+    <table>
+
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Blood Group</th>
+            <th>Priority</th>
+        </tr>
+
+        {% for patient in patients %}
+
+        <tr>
+            <td>{{ patient.name }}</td>
+            <td>{{ patient.age }}</td>
+            <td>{{ patient.gender }}</td>
+            <td>{{ patient.blood_group }}</td>
+            <td>{{ patient.priority }}</td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+</body>
+</html>

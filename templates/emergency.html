@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PULSE - Emergency Management</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 30px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🚑 PULSE - Emergency Management</h1>
+
+    <form method="POST">
+
+        <label>Patient</label>
+
+        <select name="patient_id" required>
+
+            {% for patient in patients %}
+
+            <option value="{{ patient.id }}">
+                {{ patient.name }}
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+
+        <label>Hospital</label>
+
+        <select name="hospital_id" required>
+
+            {% for hospital in hospitals %}
+
+            <option value="{{ hospital.id }}">
+                {{ hospital.name }}
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+
+        <label>Emergency Type</label>
+
+        <input
+            type="text"
+            name="emergency_type"
+            placeholder="Example: Cardiac Emergency"
+            required
+        >
+
+
+        <label>Severity</label>
+
+        <select name="severity">
+
+            <option>LOW</option>
+            <option>MEDIUM</option>
+            <option>HIGH</option>
+            <option>CRITICAL</option>
+
+        </select>
+
+
+        <label>Status</label>
+
+        <select name="status">
+
+            <option>Waiting</option>
+            <option>In Treatment</option>
+            <option>Completed</option>
+
+        </select>
+
+
+        <button type="submit">
+            Create Emergency
+        </button>
+
+    </form>
+
+
+    <h2>Emergency Cases</h2>
+
+    <table>
+
+        <tr>
+            <th>Patient</th>
+            <th>Hospital</th>
+            <th>Emergency</th>
+            <th>Severity</th>
+            <th>Status</th>
+        </tr>
+
+
+        {% for emergency in emergencies %}
+
+        <tr>
+
+            <td>{{ emergency.patient_name }}</td>
+
+            <td>{{ emergency.hospital_name }}</td>
+
+            <td>{{ emergency.emergency_type }}</td>
+
+            <td>{{ emergency.severity }}</td>
+
+            <td>{{ emergency.status }}</td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+</body>
+</html>
